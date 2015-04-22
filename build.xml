@@ -10,7 +10,7 @@
         <jar destfile="${jarDir}/${jarFile}">
             <fileset dir="${outputDir}"/>
             <manifest>
-                <attribute name="Main-Class" value="gui.ConnectFourGUI"/>
+                <attribute name="Main-Class" value="gui.PlayConnectFour"/>
             </manifest>
         </jar>
     </target>
