@@ -1,0 +1,32 @@
+<project name="Connect Four" default="jar">
+    <target name="init">
+        <property name="sourceDir" value="src"/>
+        <property name="outputDir" value="bin"/>
+        <property name="jarDir" value="jar"/>
+        <property name="jarFile" value="ConnectFourClient.jar"/>
+    </target>
+
+    <target name="jar" depends="build">
+        <jar destfile="${jarDir}/${jarFile}">
+            <fileset dir="${outputDir}"/>
+            <manifest>
+                <attribute name="Main-Class" value="gui.ConnectFourGUI"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="build" depends="init">
+        <mkdir dir="${outputDir}"/> 
+        <javac srcdir="${sourceDir}" destdir="${outputDir}"
+            includeantruntime="false"/>
+    </target>
+
+    <target name="run" depends="jar">
+        <java jar="${jarDir}/${jarFile}" fork="true"/>
+    </target>
+
+    <target name="clean" depends="init">
+        <delete dir="${outputDir}" quiet="true"/>
+        <delete dir="${jarDir}" quiet="true"/>
+    </target>
+</project>
