@@ -1,6 +1,7 @@
 FROM openjdk:8
 
 COPY src /src
+WORKDIR /src
 
 RUN javac server/ConnectFourServer.java
 
