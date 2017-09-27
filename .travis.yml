@@ -9,4 +9,9 @@ before_install:
 
 script:
   - docker build -t shamus03/connectfourserver .
-  - docker run -it shamus03/connectfourserver bash -c 'ls /src'
+  
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push shamus03/connectfourserver;
+    fi
