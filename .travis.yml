@@ -8,12 +8,11 @@ before_install:
   - docker pull openjdk:8
 
 script:
-  - docker build -t shamus03/connectfourserver .
+  - docker build -t "shamus03/connectfourserver" .
   
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    echo "Build is on master - pushing version $TRAVIS_BUILD_NUMBER";
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker tag shamus03/connectfourserver shamus03/connectfourserver:$TRAVIS_BUILD_NUMBER
-    docker push shamus03/connectfourserver;
+    docker tag "shamus03/connectfourserver" "shamus03/connectfourserver:$TRAVIS_BUILD_NUMBER"
+    docker push "shamus03/connectfourserver";
     fi
