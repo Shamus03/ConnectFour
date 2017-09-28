@@ -1,4 +1,4 @@
-FROM openjdk:8 as build
+FROM openjdk:8 AS build
 
 COPY src /usr/connectfourserver/src
 WORKDIR /usr/connectfourserver
