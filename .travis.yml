@@ -16,18 +16,6 @@ before_install:
 
 script:
   - docker build -t shamus03/connectfourserver .
-  - mkdir -p bin
-  - javac -classpath src -d bin src/gui/PlayConnectFour.java
-  - mkdir -p jar
-  - jar -cfe jar/ConnectFour.jar gui/PlayConnectFour -C bin .
-  
-deploy:
-  provider: releases
-  api_key: $GITHUB_OAUTH_TOKEN
-  file: jar/ConnectFour.jar
-  skip_cleanup: true
-  on:
-    tags: true
   
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
