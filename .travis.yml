@@ -6,6 +6,7 @@ services:
   
 before_install:
   - docker pull openjdk:8
+  - docker pull openjdk:8-jre
 
 script:
   - docker build -t shamus03/connectfourserver .
